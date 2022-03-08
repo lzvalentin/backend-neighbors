@@ -71,11 +71,7 @@ User.init(
       },
     },
     sequelize,
-<<<<<<< HEAD
-    timestamps: false,
-=======
     timestamps: true,
->>>>>>> dev
     freezeTableName: true,
     underscored: true,
     modelName: "User",
