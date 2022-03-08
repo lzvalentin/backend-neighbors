@@ -1,6 +1,12 @@
 const sequelize = require("../config/connection");
 
+<<<<<<< HEAD
+const User = require("../models/User")
+
+// const {User,Tank,Fish} = require("../models")
+=======
 const {User, HoaAdmin, CommMgr, Pet, PetVac} = require('../models')
+>>>>>>> dev
 
 
 
@@ -26,6 +32,14 @@ const seed = async ()=>{
  
        
     ],{individualHooks:true})
+<<<<<<< HEAD
+    console.log(users);
+    
+
+
+
+
+=======
 
     const pets = await Pet.bulkCreate([
         {
@@ -47,6 +61,7 @@ const seed = async ()=>{
 
     ],{individualHooks:true})
     
+>>>>>>> dev
     process.exit(0)
 }
 
