@@ -2,18 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class User extends Model {
-  // checkPassword(loginPw) {
-  //   console.log(loginPw)
-  //   console.log(this.password);
-  //   return bcrypt.compareSync(loginPw, this.password);
-  // }
-  // checkIsValid() {
-  //   return this.is_valid;
-  // }
-}
+class HoaAdmin extends Model { }
 
-User.init(
+HoaAdmin.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -48,20 +39,6 @@ User.init(
         len: [8],
       },
     },
-
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    profile_pic_url: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    }
-    // is_valid: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    // },
   },
   {
     hooks: {
@@ -71,11 +48,11 @@ User.init(
       },
     },
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "User",
+    modelName: "HoaAdmin",
   }
 );
 
-module.exports = User;
+module.exports = HoaAdmin;
