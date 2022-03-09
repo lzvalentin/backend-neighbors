@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Post extends Model {}
+
 Post.init( {
     userId:{
         type: DataTypes.INTEGER,
@@ -30,6 +31,12 @@ Post.init( {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      createdAt: {
+        field: "created",
+        type: DataTypes.DATE,
+      },
+      
+      
 
 });
 module.exports = Post;
