@@ -41,6 +41,7 @@ router.get('/:id', async (req, res) => {
 // Need to implement routes below 
 
 router.post("/login", (req, res) => {
+<<<<<<< HEAD:controllers/user.js
     // User.findOne({where:{email:req.body.email}}).then(dbUser=>{
     //     if(!dbUser){
     //         return res.status(403).send("invalid credentials")
@@ -70,6 +71,30 @@ router.post("/login", (req, res) => {
 });
 
 
+=======
+  User.findOne({
+    where:{
+        email:req.body.email
+    }
+}).then(foundUser=>{
+    if(!foundUser){
+        return res.status(401).json({msg:"wrong username/password buddy"})
+    }
+    if(bcrypt.compareSync(req.body.password,foundUser.password)){
+        req.session.user = {
+            id:foundUser.id,
+            email:foundUser.email,
+            username:foundUser.username
+        }
+        return res.json(foundUser);
+    } else {
+        return res.status(401).json({msg:"wrong username/password buddy"})
+    }
+})
+})
+
+   
+>>>>>>> dev:controllers/userRoutes.js
 router.get("/gettokendata", (req, res) => {
   // console.log(req.headers);
   // const token = req.headers?.authorization?.split(" ").pop();

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const HoaAdmin= require('../../models/HoaAdmin');
+const HoaAdmin= require('../models/HoaAdmin');
 
 //Login
 
@@ -66,4 +66,4 @@ router.post('/signup', (req, res) => {
       });
   });
 
-  modeule.exports = router;
+  module.exports = router;

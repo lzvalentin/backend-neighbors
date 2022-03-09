@@ -1,15 +1,30 @@
-const express = require('express');
-const router = express.Router();
-const userRoutes = require("./user")
+const router = require('express').Router();
 
 
-router.use("/api/users",userRoutes);
+const userRoutes = require('./userRoutes');
+const petRoutes = require('./petRoutes');
+const petVacRoutes = require('./petVacRoutes');
+const hoaRoutes = require('./hoaRoutes');
+const commMgrRoutes = require('./commMgrRoutes');
+const commentRoutes = require('./commentRoutes');
+
+// TODO Needs fix
+// const postRoutes = require('./postRoutes');
 
 
 
-router.get("/", (req, res) => {
-    res.send("hello from controllers index");
-  });
-  
+
+router.use('/users', userRoutes);
+router.use('/pets', petRoutes);
+router.use('/petVac', petVacRoutes);
+router.use('/hoa', hoaRoutes);
+router.use('/commMgr', commMgrRoutes);
+router.use('/comments', commentRoutes);
+
+
+// router.use('/posts', postRoutes);
+
+
+
 
 module.exports = router;
