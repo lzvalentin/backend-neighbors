@@ -1,6 +1,12 @@
 const router = require('express').Router();
 const User = require('../../models/User');
 
+
+router.get("/", (req, res) => {
+  res.send("Hello From Users Route");
+});
+
+
 // GET one user
 router.get('/:id', async (req, res) => {
   try {

@@ -71,7 +71,10 @@ User.init(
       },
     },
     sequelize,
+<<<<<<< HEAD
     timestamps: false,
+=======
+>>>>>>> dev
     timestamps: true,
     freezeTableName: true,
     underscored: true,

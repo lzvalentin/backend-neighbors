@@ -8,7 +8,7 @@ router.use("/api/users",userRoutes);
 
 
 router.get("/", (req, res) => {
-    res.send("hello");
+    res.send("hello from controllers index");
   });
   
 
