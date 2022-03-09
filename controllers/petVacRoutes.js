@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const PetVac = require('../../models/PetVac');
+const PetVac = require('../models/PetVac');
 
 // update pet
 
@@ -80,4 +80,4 @@ router.post('/signup', (req, res) => {
       });
   });
 
-  modeule.exports = router;
+  module.exports = router;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Pet = require('../../models/Pet');
+const Pet = require('../models/Pet');
 
 // const connection = require("../config/connection.js");
 

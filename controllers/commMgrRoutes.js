@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const CommMgr = require('../../models/CommMgr');
+const CommMgr = require('../models/CommMgr');
 
 //Login
 
@@ -66,4 +66,4 @@ router.post('/signup', (req, res) => {
       });
   });
 
-  modeule.exports = router;
+  module.exports = router;
