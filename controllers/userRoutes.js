@@ -4,9 +4,10 @@ const {User} = require('../models');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+
+// GET all users
 router.get("/", async (req, res) => {
   try {
-    // Find all users
     const userData = await User.findAll();
     if (!userData) {
       res.status(404).json({ message: 'No user with this id!' });
@@ -38,31 +39,59 @@ router.get('/:id', async (req, res) => {
 
 
 
-// Need to implement routes below 
-
+// POST Login
 router.post("/login", (req, res) => {
-  User.findOne({
-    where:{
-        email:req.body.email
-    }
-}).then(foundUser=>{
-    if(!foundUser){
-        return res.status(401).json({msg:"wrong username/password buddy"})
-    }
-    if(bcrypt.compareSync(req.body.password,foundUser.password)){
-        req.session.user = {
-            id:foundUser.id,
-            email:foundUser.email,
-            username:foundUser.username
+  User.findOne({where:{email:req.body.email}}).then(dbUser=>{
+      if(!dbUser){
+          return res.status(403).send("invalid credentials")
+      } 
+      if (bcrypt.compareSync(req.body.password,dbUser.password)) {
+          const token = jwt.sign(
+            {
+              email: dbUser.email,
+              id: dbUser.id
+            },
+            process.env.JWT_SECRET,
+            {
+              expiresIn: "2h"
+            }
+          );
+          res.json({ 
+              token: token, 
+              user: dbUser
+          });
+        } else {
+          return res.status(403).send("invalid credentials");
         }
-        return res.json(foundUser);
-    } else {
-        return res.status(401).json({msg:"wrong username/password buddy"})
-    }
-})
-})
+  }).catch(err=>{
+      console.log(err)
+      res.status(500).json({msg:"an error occured",err})
+  })
+});
 
-   
+
+
+// POST New User
+router.post('/', async (req, res) => {
+  console.log(req.body);
+  try {
+    const newUser = await User.create({
+      first_name:req.body.first_name,
+      last_name:req.body.last_name,
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      address: req.body.address,
+    });
+    res.status(200).json(newUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+// GET token
 router.get("/gettokendata", (req, res) => {
   console.log(req.headers);
   const token = req.headers?.authorization?.split(" ").pop();
@@ -79,10 +108,6 @@ router.get("/gettokendata", (req, res) => {
     }
   });
 });
-
-
-// Need to implement routes Above 
-
 
 
 module.exports = router;
