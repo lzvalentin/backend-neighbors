@@ -18,32 +18,32 @@ router.get("/", async (req, res) => {
 });
 
   // Get pets by id
-  router.get("/:id", (req, res) => {
-    Pet.findByPk(req.params.id,{
-      include: []
-    })
-      .then(dbPet => {
-        res.json(dbPet);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({ msg: "uh oh!", err });
-      });
+  router.get("/:id", async (req, res) => {
+    try {
+      const petData = await Pet.findByPk(req.params.id);
+      if (!petData) {
+        res.status(404).json({ message: 'No pet with this id!' });
+        return;
+      }
+      res.status(200).json(petData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   });
 
-  // Create a new pet
 
+  // Create a new pet
   router.post('/', async (req, res) => {
     try {
       const petData = await Pet.create(req.body);
       res.status(200).json(petData);
     } catch (err) {
-      res.status(400).json(err);
+      res.status(500).json(err);
     }
   });
  
-  // update pet
 
+  // update pet
   router.put('/:id', async (req, res) => {
     try {
       const petData = await Pet.update(req.body, {
@@ -63,17 +63,19 @@ router.get("/", async (req, res) => {
   });
  
 
-  // deletes pet based on id
-  router.delete('/:id', (req, res) => {
-    Pet.findByPk(req.params.petid).then(foundPet => {
-      if (!foundPet) {
-        return res.status(404).json({ msg: "no such pet!" });
-      } else {
-        foundPet.removeTag(req.params.id);
-        res.json(foundPet);
-      }
-    });
-  });
+  // TODO FIX delete pet based on id
+
+
+  // router.delete('/:id', (req, res) => {
+  //   Pet.findByPk(req.params.id).then(foundPet => {
+  //     if (!foundPet) {
+  //       return res.status(404).json({ msg: "no such pet!" });
+  //     } else {
+  //       foundPet.removeTag(req.params.id);
+  //       res.json(foundPet);
+  //     }
+  //   });
+  // });
   
   module.exports = router;
   
