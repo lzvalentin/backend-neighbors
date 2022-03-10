@@ -23,6 +23,15 @@ const seed = async ()=>{
             password:"password",
             address: "123 Ben St. Seattle, WA",
         },
+        {
+            first_name: "Rusell",
+            last_name: "Wilson",
+            username: "Bye_Russ",
+            email:"russ@gmail.com",
+            password:"password",
+            address: "Denver, CO",
+        },
+        
  
        
     ],{individualHooks:true})
@@ -46,6 +55,10 @@ const seed = async ()=>{
         },
 
     ],{individualHooks:true})
+    
+
+
+
     
     process.exit(0)
 }
