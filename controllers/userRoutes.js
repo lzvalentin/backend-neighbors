@@ -64,20 +64,20 @@ router.post("/login", (req, res) => {
 
    
 router.get("/gettokendata", (req, res) => {
-  // console.log(req.headers);
-  // const token = req.headers?.authorization?.split(" ").pop();
-  // console.log(token);
-  // //  res.json(req.headers);
-  // jwt.verify(token, process.env.JWT_SECRET, (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.status(403).json({ msg: "invalid credentials", err });
-  //   } else {
-  //     User.findByPk(data.id).then(userData=>{
-  //         res.json(userData);
-  //     })
-  //   }
-  // });
+  console.log(req.headers);
+  const token = req.headers?.authorization?.split(" ").pop();
+  console.log(token);
+  //  res.json(req.headers);
+  jwt.verify(token, process.env.JWT_SECRET, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(403).json({ msg: "invalid credentials", err });
+    } else {
+      User.findByPk(data.id).then(userData=>{
+          res.json(userData);
+      })
+    }
+  });
 });
 
 
