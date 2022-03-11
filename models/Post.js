@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 
 class Post extends Model { }
 Post.init({
-  userId: {
+  id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
