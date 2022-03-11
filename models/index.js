@@ -19,9 +19,5 @@ PetVac.belongsTo(Pet);
 
 
 
-<<<<<<< HEAD
-module.exports = { User, HoaAdmin, CommMgr, Pet, PetVac, Post, Comment}
-=======
 module.exports = { User, HoaAdmin, CommMgr, Pet, PetVac, User, Comment, Post}
 
->>>>>>> dev
