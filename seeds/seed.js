@@ -1,6 +1,10 @@
 const sequelize = require("../config/connection");
 
+<<<<<<< HEAD
+const {User, Post, HoaAdmin, CommMgr, Pet, PetVac, Comment} = require('../models')
+=======
 const {User, HoaAdmin, CommMgr, Pet, PetVac, Post, Comment} = require('../models')
+>>>>>>> dev
 
 
 
@@ -103,6 +107,104 @@ const seed = async ()=>{
 
     // ],{individualHooks:true})
     
+  
+    const comments = await Comment.bulkCreate([
+        {
+            title: "Hello",
+            body: "Comment here",
+            UserId: "2"
+        },
+        {
+            title: "Hi",
+            body: "Really good",
+            UserId: "3"
+        },
+
+    ],{individualHooks:true})
+
+   const admins = await HoaAdmin.bulkCreate([
+        {
+            first_name: "joe",
+            last_name: "joe",
+            username: "joejoe",
+            email:"joe@joe.joe",
+            password:"password",
+        },
+        {
+            first_name: "david",
+            last_name: "david",
+            username: "daviddav",
+            email:"david@david.david",
+            password:"password",
+        },
+        {
+            first_name: "sam",
+            last_name: "sam",
+            username: "samsam",
+            email:"sam@gmail.com",
+            password:"password",
+        },
+               
+    ],{individualHooks:true})
+
+    const commMgr = await CommMgr.bulkCreate([
+        {
+            first_name: "kelly",
+            last_name: "kelly",
+            username: "kellykelly",
+            email:"kelly@kelly.kelly",
+            password:"password",
+        },
+        {
+            first_name: "rob",
+            last_name: "rob",
+            username: "robrob",
+            email:"rob@rob.rob",
+            password:"password",
+        },
+        {
+            first_name: "ana",
+            last_name: "ana",
+            username: "ana_ana",
+            email:"ana@gmail.com",
+            password:"password",
+        },
+               
+    ],{individualHooks:true})
+
+    const posts = await Post.bulkCreate([
+        {
+            name: "Kelin",
+            title: "Post",
+            content: "lovely community",
+            location: "123 Joe St. Seattle, WA",
+            category: "none",
+            UserId: "1"
+        },
+        {
+            name: "Raddy",
+            title: "Post",
+            content: "lovely community",
+            location: "123 Joe St. Seattle, WA",
+            category: "none",
+            UserId: "2"
+        },
+
+    ],{individualHooks:true})
+
+    // const petvac = await PetVac.bulkCreate([
+    //     {
+    //         type: "cat",
+    //         date_received: "",
+    //         expiration_date: "",
+    //     },
+    //     {
+    //         type: "dog",
+    //         date_received: "",
+    //         expiration_date: "", 
+    //     },
+               
+    // ],{individualHooks:true})
 
 
 
