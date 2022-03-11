@@ -19,5 +19,13 @@ PetVac.belongsTo(Pet);
 
 
 
+User.hasMany(Comment)
+Comment.belongsTo(User)
+
+// Comment.belongsToMany(User, { through: 'UserComment'})
+
+
+
+
 module.exports = { User, HoaAdmin, CommMgr, Pet, PetVac, User, Comment, Post}
 
