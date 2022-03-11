@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 
-const {User, HoaAdmin, CommMgr, Pet, PetVac, Comment} = require('../models')
+const {User, Post, HoaAdmin, CommMgr, Pet, PetVac, Comment} = require('../models')
 
 
 
@@ -123,19 +123,39 @@ const seed = async ()=>{
                
     ],{individualHooks:true})
 
-    const petvac = await PetVac.bulkCreate([
+    const posts = await Post.bulkCreate([
         {
-            type: "cat",
-            date_received: "",
-            expiration_date: "",
+            name: "Kelin",
+            title: "Post",
+            content: "lovely community",
+            location: "123 Joe St. Seattle, WA",
+            category: "none",
+            UserId: "1"
         },
         {
-            type: "dog",
-            date_received: "",
-            expiration_date: "", 
+            name: "Raddy",
+            title: "Post",
+            content: "lovely community",
+            location: "123 Joe St. Seattle, WA",
+            category: "none",
+            UserId: "2"
         },
-               
+
     ],{individualHooks:true})
+
+    // const petvac = await PetVac.bulkCreate([
+    //     {
+    //         type: "cat",
+    //         date_received: "",
+    //         expiration_date: "",
+    //     },
+    //     {
+    //         type: "dog",
+    //         date_received: "",
+    //         expiration_date: "", 
+    //     },
+               
+    // ],{individualHooks:true})
 
 
 
