@@ -1,6 +1,10 @@
 const sequelize = require("../config/connection");
 
+<<<<<<< HEAD
 const {User, Post, HoaAdmin, CommMgr, Pet, PetVac, Comment} = require('../models')
+=======
+const {User, HoaAdmin, CommMgr, Pet, PetVac, Post, Comment} = require('../models')
+>>>>>>> dev
 
 
 
@@ -29,7 +33,7 @@ const seed = async ()=>{
             first_name: "Rusell",
             last_name: "Wilson",
             username: "Bye_Russ",
-            email:"russ@gmail.com",
+            email:"russ@wilson.com",
             password:"password",
             address: "Denver, CO",
         },
@@ -57,6 +61,51 @@ const seed = async ()=>{
         },
 
     ],{individualHooks:true})
+
+    const comments = await Comment.bulkCreate([
+        {
+            title: "Hello !!",
+            body: "This is my first comment !!",
+            UserId: "1"
+        },
+        {
+            title: "Huzzah !",
+            body: "I am so happy with my HOA !",
+            UserId: "1"
+        },
+        {
+            title: "Bye Seattle !",
+            body: "I am moving to Denver !",
+            UserId: "3"
+        },
+        {
+            title: "Hello HOA Friends",
+            body: "I am Ben :) ",
+            UserId: "2"
+        },
+
+    ],{individualHooks:true})
+
+
+    // const posts = await Post.bulkCreate([
+    //     {
+    //         userId: "Fergus",
+    //         name: "Cat",
+    //         title: "Domestic Shorthair",
+    //         content: "Torby",
+    //         weight: "17",
+    //         UserId: "2"
+    //     },
+    //     {
+    //         name: "Nutmeg",
+    //         type: "Cat",
+    //         bread: "Domestic Shorthair",
+    //         color: "Tabby",
+    //         weight: "13",
+    //         UserId: "2"
+    //     },
+
+    // ],{individualHooks:true})
     
   
     const comments = await Comment.bulkCreate([
