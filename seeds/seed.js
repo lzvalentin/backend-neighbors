@@ -1,10 +1,6 @@
 const sequelize = require("../config/connection");
 
-<<<<<<< HEAD
-const {User, Post, HoaAdmin, CommMgr, Pet, PetVac, Comment} = require('../models')
-=======
 const {User, HoaAdmin, CommMgr, Pet, PetVac, Post, Comment} = require('../models')
->>>>>>> dev
 
 
 
@@ -87,40 +83,7 @@ const seed = async ()=>{
     ],{individualHooks:true})
 
 
-    // const posts = await Post.bulkCreate([
-    //     {
-    //         userId: "Fergus",
-    //         name: "Cat",
-    //         title: "Domestic Shorthair",
-    //         content: "Torby",
-    //         weight: "17",
-    //         UserId: "2"
-    //     },
-    //     {
-    //         name: "Nutmeg",
-    //         type: "Cat",
-    //         bread: "Domestic Shorthair",
-    //         color: "Tabby",
-    //         weight: "13",
-    //         UserId: "2"
-    //     },
 
-    // ],{individualHooks:true})
-    
-  
-    const comments = await Comment.bulkCreate([
-        {
-            title: "Hello",
-            body: "Comment here",
-            UserId: "2"
-        },
-        {
-            title: "Hi",
-            body: "Really good",
-            UserId: "3"
-        },
-
-    ],{individualHooks:true})
 
    const admins = await HoaAdmin.bulkCreate([
         {
@@ -192,19 +155,21 @@ const seed = async ()=>{
 
     ],{individualHooks:true})
 
-    // const petvac = await PetVac.bulkCreate([
-    //     {
-    //         type: "cat",
-    //         date_received: "",
-    //         expiration_date: "",
-    //     },
-    //     {
-    //         type: "dog",
-    //         date_received: "",
-    //         expiration_date: "", 
-    //     },
+    const petvac = await PetVac.bulkCreate([
+        {
+            type: "rabbies",
+            date_received: "4/1/18",
+            expiration_date: "4/1/22",
+            PetId: "2"
+        },
+        {
+            type: "FVRCP",
+            date_received: "4/1/18",
+            expiration_date: "4/1/22", 
+            PetId: "2"
+        },
                
-    // ],{individualHooks:true})
+    ],{individualHooks:true})
 
 
 

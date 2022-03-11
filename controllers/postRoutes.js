@@ -16,13 +16,8 @@
 const router = require('express').Router();
 const Post = require('../models/Post');
 
-<<<<<<< HEAD
-// get single post
-
-=======
 
 // get single post
->>>>>>> dev
 router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
@@ -36,13 +31,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-// get all posts
-
-=======
 
 // get all posts
->>>>>>> dev
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll();
@@ -56,13 +46,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-// create post
-
-=======
 
 // create post
->>>>>>> dev
 router.post('/', async (req, res) => {
   try {
     const postData = await Post.create(req.body);
@@ -72,10 +57,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
 // update post
 router.put('/:id', async (req, res) => {
   try {
@@ -94,9 +75,5 @@ router.put('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
 
 module.exports = router;
