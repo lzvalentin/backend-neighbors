@@ -4,17 +4,19 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-const allRoutes = require('./controllers/index');
+const allRoutes = require('./controllers');
 const sequelize = require('./config/connection');
 
-//LOCAL
-app.use(cors());
+// //LOCAL
+// app.use(cors());
 
 
 //DEPLOYED
-// app.use(cors({
-//   origin:"heroku deployed react app URL here"
-// }))
+app.use(cors({
+  origin:"http://localhost:3001",
+  methods: "GET, PUT, DELETE, POST",
+  credentials: true
+}))
 
 
 
