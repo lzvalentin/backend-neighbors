@@ -5,6 +5,7 @@ const HoaAdmin = require('./HoaAdmin');
 const CommMgr = require('./CommMgr');
 const Pet = require('./Pet');
 const PetVac = require('./PetVac');
+const Payment = require('./Payment');
 
 
 // const {User, HoaAdmin, CommMgr, Pet, PetVac} = require('../models')
@@ -27,5 +28,5 @@ Comment.belongsTo(User)
 
 
 
-module.exports = { User, HoaAdmin, CommMgr, Pet, PetVac, User, Comment, Post}
+module.exports = { User, HoaAdmin, CommMgr, Pet, PetVac, User, Comment, Payment, Post}
 

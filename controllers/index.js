@@ -10,6 +10,7 @@ const hoaRoutes = require('./hoaRoutes');
 const commMgrRoutes = require('./commMgrRoutes');
 const commentRoutes = require('./commentRoutes');
 const postRoutes = require('./postRoutes');
+const paymentRoutes = require('./paymentRoutes');
 
 
 router.use('/users', userRoutes);
@@ -19,6 +20,7 @@ router.use('/hoa', hoaRoutes);
 router.use('/commMgr', commMgrRoutes);
 router.use('/comments', commentRoutes);
 router.use('/posts', postRoutes);
+router.use('/api/payments', paymentRoutes);
 
 
 

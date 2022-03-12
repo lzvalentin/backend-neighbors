@@ -1,20 +1,5 @@
-// const router = require('express').Router();
-// const User = require('../models/User');
-// const {
-//   getSinglePost,
-//   getPosts,
-//   createPost,
-// } = require('../../controllers/postController');
-
-// router.route('/').get(getPosts).post(createPost);
-
-// router.route('/:postId').get(getSinglePost);
-
-// module.exports = router;
-
-
 const router = require('express').Router();
-const Post = require('../models/Post');
+const {Post} = require('../models');
 
 
 // get single post
