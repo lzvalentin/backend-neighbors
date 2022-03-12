@@ -57,6 +57,22 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+
+// Get payment by id
+router.get("/:id", async (req, res) => {
+  try {
+    const paymentData = await Payment.findByPk(req.params.id);
+    if (!paymentData) {
+      res.status(404).json({ message: 'No payment with this id!' });
+      return;
+    }
+    res.status(200).json(paymentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 //  payment by id
 //delete
 

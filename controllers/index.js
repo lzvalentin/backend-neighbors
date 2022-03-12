@@ -20,7 +20,7 @@ router.use('/hoa', hoaRoutes);
 router.use('/commMgr', commMgrRoutes);
 router.use('/comments', commentRoutes);
 router.use('/posts', postRoutes);
-router.use('/api/payments', paymentRoutes);
+router.use('/payments', paymentRoutes);
 
 
 

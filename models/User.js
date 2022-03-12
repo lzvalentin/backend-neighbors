@@ -57,7 +57,12 @@ User.init(
     profile_pic_url: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
+
     // is_valid: {
     //   type: DataTypes.BOOLEAN,
     //   allowNull: false,
