@@ -1,21 +1,21 @@
 const router = require('express').Router();
-const PetVac = require('../models/PetVac');
+const {PetVac, User} = require('../models');
 
 // update pet
 
 router.put('/:id', async (req, res) => {
     try {
-      const petData = await Pet.update(req.body, {
+      const petVacData = await PetVac.update(req.body, {
         where: {
           id: req.params.id,
         },
         individualHooks: true
       });
-      if (!petData[0]) {
+      if (!petVacData[0]) {
         res.status(404).json({ message: 'No pets with this id!' });
         return;
       }
-      res.status(200).json(petData);
+      res.status(200).json(petVacData);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -47,7 +47,7 @@ router.post("/login", (req, res) => {
 
    // Get pets by id
    router.get("/:id", (req, res) => {
-    Pet.findByPk(req.params.id,{
+    PetVac.findByPk(req.params.id,{
       include: []
     })
       .then(dbPet => {
