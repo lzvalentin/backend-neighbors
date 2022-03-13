@@ -1,11 +1,12 @@
 const sequelize = require("../config/connection");
 
-const {User, HoaAdmin, CommMgr, Pet, PetVac, Post, Comment} = require('../models')
+const {User, Pet, PetVac, Post, Comment, Payment} = require('../models')
 
 
 
 const seed = async ()=>{
     await sequelize.sync({force:true})
+
     const users = await User.bulkCreate([
         {
             first_name: "joe",
@@ -59,6 +60,42 @@ const seed = async ()=>{
 
     ],{individualHooks:true})
 
+    const petvac = await PetVac.bulkCreate([
+        {
+            type: "rabbies",
+            date_received: "4/1/18",
+            expiration_date: "4/1/22",
+            PetId: "2"
+        },
+        {
+            type: "FVRCP",
+            date_received: "4/1/18",
+            expiration_date: "4/1/22", 
+            PetId: "2"
+        },
+               
+    ],{individualHooks:true})
+
+    const posts = await Post.bulkCreate([
+        {
+            category: "none",
+            title: "Post",
+            content: "lovely community",
+            UserId: "1"
+            // name: "Kelin",
+            // location: "123 Joe St. Seattle, WA",
+        },
+        {
+            category: "none",
+            title: "Post",
+            content: "lovely community",
+            UserId: "2"
+            // name: "Raddy",
+            // location: "123 Joe St. Seattle, WA",
+        },
+
+    ],{individualHooks:true})
+
     const comments = await Comment.bulkCreate([
         {
             title: "Hello !!",
@@ -82,100 +119,83 @@ const seed = async ()=>{
         },
 
     ],{individualHooks:true})
-
-
-
-
-   const admins = await HoaAdmin.bulkCreate([
+    
+    const payment = await Payment.bulkCreate([
         {
-            first_name: "joe",
-            last_name: "joe",
-            username: "joejoe",
-            email:"joe@joe.joe",
-            password:"password",
-        },
-        {
-            first_name: "david",
-            last_name: "david",
-            username: "daviddav",
-            email:"david@david.david",
-            password:"password",
-        },
-        {
-            first_name: "sam",
-            last_name: "sam",
-            username: "samsam",
-            email:"sam@gmail.com",
-            password:"password",
-        },
-               
-    ],{individualHooks:true})
-
-    const commMgr = await CommMgr.bulkCreate([
-        {
-            first_name: "kelly",
-            last_name: "kelly",
-            username: "kellykelly",
-            email:"kelly@kelly.kelly",
-            password:"password",
-        },
-        {
-            first_name: "rob",
-            last_name: "rob",
-            username: "robrob",
-            email:"rob@rob.rob",
-            password:"password",
-        },
-        {
-            first_name: "ana",
-            last_name: "ana",
-            username: "ana_ana",
-            email:"ana@gmail.com",
-            password:"password",
-        },
-               
-    ],{individualHooks:true})
-
-    const posts = await Post.bulkCreate([
-        {
-            name: "Kelin",
-            title: "Post",
-            content: "lovely community",
-            location: "123 Joe St. Seattle, WA",
-            category: "none",
-            UserId: "1"
-        },
-        {
-            name: "Raddy",
-            title: "Post",
-            content: "lovely community",
-            location: "123 Joe St. Seattle, WA",
-            category: "none",
+            payment_date: "03/01/2022",
+            balance: "2000",
+            payment_amount: "100",
+            payment_type: "Utils",
             UserId: "2"
         },
+        {
+            payment_date: "02/10/2022",
+            balance: "1200",
+            payment_amount: "200",
+            payment_type: "Fine",
+            UserId: "3"
+        },
+
 
     ],{individualHooks:true})
 
-    const petvac = await PetVac.bulkCreate([
-        {
-            type: "rabbies",
-            date_received: "4/1/18",
-            expiration_date: "4/1/22",
-            PetId: "2"
-        },
-        {
-            type: "FVRCP",
-            date_received: "4/1/18",
-            expiration_date: "4/1/22", 
-            PetId: "2"
-        },
-               
-    ],{individualHooks:true})
-
-
-
-    
     process.exit(0)
 }
 
+
+
 seed();
+
+
+//      OLD     seeds
+
+
+//    const admins = await HoaAdmin.bulkCreate([
+//         {
+//             first_name: "joe",
+//             last_name: "joe",
+//             username: "joejoe",
+//             email:"joe@joe.joe",
+//             password:"password",
+//         },
+//         {
+//             first_name: "david",
+//             last_name: "david",
+//             username: "daviddav",
+//             email:"david@david.david",
+//             password:"password",
+//         },
+//         {
+//             first_name: "sam",
+//             last_name: "sam",
+//             username: "samsam",
+//             email:"sam@gmail.com",
+//             password:"password",
+//         },
+               
+//     ],{individualHooks:true})
+
+//     const commMgr = await CommMgr.bulkCreate([
+//         {
+//             first_name: "kelly",
+//             last_name: "kelly",
+//             username: "kellykelly",
+//             email:"kelly@kelly.kelly",
+//             password:"password",
+//         },
+//         {
+//             first_name: "rob",
+//             last_name: "rob",
+//             username: "robrob",
+//             email:"rob@rob.rob",
+//             password:"password",
+//         },
+//         {
+//             first_name: "ana",
+//             last_name: "ana",
+//             username: "ana_ana",
+//             email:"ana@gmail.com",
+//             password:"password",
+//         },
+               
+//     ],{individualHooks:true})

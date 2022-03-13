@@ -3,24 +3,26 @@ const router = require('express').Router();
 const jwtAuthMid = require("../utlis/tokenAuth");
 const {User} = require('../models');
 
+
 const userRoutes = require('./userRoutes');
 const petRoutes = require('./petRoutes');
 const petVacRoutes = require('./petVacRoutes');
-const hoaRoutes = require('./hoaRoutes');
-const commMgrRoutes = require('./commMgrRoutes');
 const commentRoutes = require('./commentRoutes');
 const postRoutes = require('./postRoutes');
 const paymentRoutes = require('./paymentRoutes');
+// const hoaRoutes = require('./hoaRoutes');
+// const commMgrRoutes = require('./commMgrRoutes');
 
 
 router.use('/users', userRoutes);
 router.use('/pets', petRoutes);
 router.use('/petVac', petVacRoutes);
-router.use('/hoa', hoaRoutes);
-router.use('/commMgr', commMgrRoutes);
 router.use('/comments', commentRoutes);
 router.use('/posts', postRoutes);
 router.use('/payments', paymentRoutes);
+// router.use('/hoa', hoaRoutes);
+// router.use('/commMgr', commMgrRoutes);
+
 
 
 

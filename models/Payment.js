@@ -12,31 +12,30 @@ Payment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    first_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     payment_date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
     balance: {
-        type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.DECIMAL(10,2),
         allowNull: false,
       },
     payment_amount: {
       type: DataTypes.DECIMAL(10,2),
       allowNull: false,
-     
     },
     payment_type: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    // first_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    // last_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
   },
   {
     // hooks: {

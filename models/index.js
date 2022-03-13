@@ -1,14 +1,14 @@
 const User = require('./User');
-const Comment = require('./Comment');
-const Post = require('./Post');
-const HoaAdmin = require('./HoaAdmin');
-const CommMgr = require('./CommMgr');
 const Pet = require('./Pet');
 const PetVac = require('./PetVac');
+const Post = require('./Post');
+const Comment = require('./Comment');
 const Payment = require('./Payment');
 
 
-// const {User, HoaAdmin, CommMgr, Pet, PetVac} = require('../models')
+// const HoaAdmin = require('./HoaAdmin');
+// const CommMgr = require('./CommMgr');
+
 
 
 User.hasMany(Pet)
@@ -19,14 +19,32 @@ Pet.hasMany(PetVac);
 PetVac.belongsTo(Pet);
 
 
+User.hasMany(Post)
+Post.belongsToMany(User, { through: 'UserPost'})
+
+
+Post.hasMany(Comment)
+Comment.belongsToMany(Post, { through: 'Post_has_Comment'})
+
 
 User.hasMany(Comment)
-Comment.belongsTo(User)
+Comment.belongsToMany(User, { through: 'User_has_Comment'})
 
+
+User.hasMany(Payment)
+Payment.belongsToMany(User, { through: 'UserPayment'})
+
+
+
+
+
+//       Duplicates     BELOW  
+// User.hasMany(Comment)
+// Comment.belongsTo(User)
 // Comment.belongsToMany(User, { through: 'UserComment'})
 
 
 
 
-module.exports = { User, HoaAdmin, CommMgr, Pet, PetVac, User, Comment, Payment, Post}
+module.exports = { User, Pet, PetVac, Post, Comment, Payment}
 
