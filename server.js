@@ -7,8 +7,9 @@ const app = express();
 const allRoutes = require('./controllers');
 const sequelize = require('./config/connection');
 
-// //LOCAL
+// //LOCAl
 // app.use(cors());
+
 
 
 //DEPLOYED
