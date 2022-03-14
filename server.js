@@ -7,13 +7,14 @@ const app = express();
 const allRoutes = require('./controllers');
 const sequelize = require('./config/connection');
 
-// //LOCAL
+// //LOCAl
 // app.use(cors());
+
 
 
 //DEPLOYED
 app.use(cors({
-  origin:"http://localhost:3001",
+  origin:"https://neighbors-p3.herokuapp.com/",
   methods: "GET, PUT, DELETE, POST",
   credentials: true
 }))

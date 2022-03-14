@@ -2,7 +2,7 @@ const User = require('./User');
 const Pet = require('./Pet');
 const PetVac = require('./PetVac');
 const Post = require('./Post');
-const Comment = require('./Comment');
+const Comment = require('./Comment_new');
 const Payment = require('./Payment');
 
 
