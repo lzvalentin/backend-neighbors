@@ -73,7 +73,34 @@ router.get("/:id", async (req, res) => {
 });
 
 
-//  payment by id
-//delete
+// // get all balances
+
+// router.get("/", async (req, res) => {
+//   try {
+//     const balanceData = await Balance.findAll({});
+//     if (!balanceData) {
+//       res.status(404).json({ message: "No balance with this id!" });
+//       return;
+//     }
+//     res.status(200).json(balanceData);
+//   } catch (error) {
+//       console.log(error)
+//     res.status(500).json(error);
+//   }
+// });
+
+
+// // fee by single user
+
+// router.post("/", async (req, res) => {
+//   try {
+//     const paymentData = await Payment.create(req.body);
+//     console.log(paymentData);
+//     res.status(200).json(paymentData);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
