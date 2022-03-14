@@ -10,7 +10,7 @@ Post.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  name: {
+  category: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -22,14 +22,14 @@ Post.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  location: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  // name: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false,
+  // },
+  // location: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false,
+  // },
 },
   {
     sequelize,
