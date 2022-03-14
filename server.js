@@ -13,7 +13,7 @@ const sequelize = require('./config/connection');
 
 //DEPLOYED
 app.use(cors({
-  origin:"http://localhost:3001",
+  origin:"https://neighbors-p3.herokuapp.com/",
   methods: "GET, PUT, DELETE, POST",
   credentials: true
 }))
