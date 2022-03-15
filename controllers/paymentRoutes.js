@@ -1,12 +1,5 @@
 const router = require("express").Router();
-<<<<<<< HEAD
-const {Payment} = require("../models");
-const stripe = process.env.STRIPE_SECRET_KEY;
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-const bodyParser = require('body-parser');
-=======
 const {Payment, User} = require("../models");
->>>>>>> dev
 
 // List all payments,
 // Create a payment
