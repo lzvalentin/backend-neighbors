@@ -7,32 +7,27 @@ const app = express();
 const allRoutes = require('./controllers');
 const sequelize = require('./config/connection');
 
-// //LOCAl
+// //LOCAL
 // app.use(cors());
 
 
-//    CORS    TEST
-const whitelist = ["https://neighbors-p3.herokuapp.com", /\.neighbors-p3.herokuapp\.com$/]
-
+//DEPLOYED
 app.use(cors({
-  origin: whitelist,
+  origin:"http://localhost:3001",
   methods: "GET, PUT, DELETE, POST",
   credentials: true
 }))
-
-
-//DEPLOYED
-// app.use(cors({
-//   origin:"https://neighbors-p3.herokuapp.com/",
-//   methods: "GET, PUT, DELETE, POST",
-//   credentials: true
-// }))
 
 
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+
+
+
 
 
 app.use(allRoutes);
