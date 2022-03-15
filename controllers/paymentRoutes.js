@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Payment} = require("../models");
+const {Payment, User} = require("../models");
 
 // List all payments,
 // Create a payment
@@ -11,7 +11,9 @@ const {Payment} = require("../models");
 router.get("/", async (req, res) => {
   try {
       console.log("getRoutes")
-    const paymentData = await Payment.findAll({});
+    const paymentData = await Payment.findAll({
+      include: [User]
+    });
     if (!paymentData) {
       res.status(404).json({ message: "No payment with this id!" });
       return;

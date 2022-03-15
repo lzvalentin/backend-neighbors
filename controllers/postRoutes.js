@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post} = require('../models');
+const {Post, Comment, User} = require('../models');
 
 
 // get single post
@@ -20,7 +20,9 @@ router.get('/:id', async (req, res) => {
 // get all posts
 router.get("/", async (req, res) => {
   try {
-    const postData = await Post.findAll();
+    const postData = await Post.findAll({
+      include: [Comment, User]
+    });
     if (!postData) {
       res.status(404).json({ message: 'No post with this id!' });
       return;

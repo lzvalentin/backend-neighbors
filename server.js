@@ -11,13 +11,22 @@ const sequelize = require('./config/connection');
 // app.use(cors());
 
 
+//    CORS    TEST
+const whitelist = ["https://neighbors-p3.herokuapp.com", /\.neighbors-p3.herokuapp\.com$/]
 
-//DEPLOYED
 app.use(cors({
-  origin:"https://neighbors-p3.herokuapp.com/",
+  origin: whitelist,
   methods: "GET, PUT, DELETE, POST",
   credentials: true
 }))
+
+
+//DEPLOYED
+// app.use(cors({
+//   origin:"https://neighbors-p3.herokuapp.com/",
+//   methods: "GET, PUT, DELETE, POST",
+//   credentials: true
+// }))
 
 
 
