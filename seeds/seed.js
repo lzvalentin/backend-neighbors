@@ -105,25 +105,41 @@ const seed = async ()=>{
 
     const posts = await Post.bulkCreate([
         {
-            category: "none",
-            title: "Post",
-            content: "lovely community",
+            id: 1,
+            category: "Event",
+            title: "Having a BBQ",
+            content: "Hey Everyone, I am having a BBQ next weekend!",
             UserId: "1"
-            // name: "Kelin",
-            // location: "123 Joe St. Seattle, WA",
         },
         {
-            category: "none",
-            title: "Post",
-            content: "Hello !",
+            id: 2,
+            category: "Help Wanted",
+            title: "Looking for Babysitter",
+            content: "Hey Neighbors, I am looking for a babysitter for this Friday",
             UserId: "2"
         },
         {
-            category: "none",
-            title: "Post",
-            content: "Hey there",
+            id: 3,
+            category: "Announcement ",
+            title: "New Neighbor",
+            content: "Just saying hi :)",
             UserId: "3"
         },
+        {
+            id: 4,
+            category: "Lost Pet",
+            title: "Help with lost cat",
+            content: "Looking for my cat Fergus :( we could not find him last night",
+            UserId: "1"
+        },
+        {
+            id: 5,
+            category: "Neighborhood Watch ",
+            title: "Weird guy near the park",
+            content: "FYI guys, I saw a suspicious character last night. Reach out if you see something ",
+            UserId: "2"
+        },
+
 
     ],{individualHooks:true})
 
@@ -143,28 +159,34 @@ const seed = async ()=>{
 
     const comments = await Comment.bulkCreate([
         {
-            title: "Hello !!",
-            body: "This is my first comment !!",
-            UserId: "1",
+            id: 1,
+            body: "I am in! Love BBQs",
+            UserId: "2",
             PostId: "1",
         },
         {
-            title: "Huzzah !",
-            body: "I am so happy with my HOA !",
+            id: 2,
+            body: "My 15 year old daughter is a very responsible babysitter. I will DM you",
+            UserId: "1",
+            PostId: "2",
+        },
+        {
+            id: 3,
+            body: "Hi Neighbor! Welcome to our HOA",
             UserId: "1",
             PostId: "3",
         },
         {
-            title: "Bye Seattle !",
-            body: "I am moving to Denver !",
-            UserId: "3",
-            PostId: "2",
+            id: 4,
+            body: "Hey, no need to worry anymore, he stopped by this morning. I will bring him over later today",
+            UserId: "2",
+            PostId: "4",
         },
         {
-            title: "Hello HOA Friends",
-            body: "I am Ben :) ",
-            UserId: "2",
-            PostId: "2",
+            id: 5,
+            body: "I saw him this morning and called 911",
+            UserId: "1",
+            PostId: "5",
         },
 
     ],{individualHooks:true})
