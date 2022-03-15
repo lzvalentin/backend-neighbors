@@ -71,21 +71,21 @@ const seed = async ()=>{
 
     ],{individualHooks:true})
 
-    const userpets = await UserPet.bulkCreate([
-        {
-            PetId: 1,
-            UserId: 3,
-        },
-        {
-            PetId: 2,
-            UserId: 2,
-        },
-        {
-            PetId: 3,
-            UserId: 1,
-        },
+    // const userpets = await UserPet.bulkCreate([
+    //     {
+    //         PetId: 1,
+    //         UserId: 3,
+    //     },
+    //     {
+    //         PetId: 2,
+    //         UserId: 2,
+    //     },
+    //     {
+    //         PetId: 3,
+    //         UserId: 1,
+    //     },
 
-    ],{individualHooks:true})
+    // ],{individualHooks:true})
 
     const petvac = await PetVac.bulkCreate([
         {
@@ -210,17 +210,17 @@ const seed = async ()=>{
 
     ],{individualHooks:true})
 
-    const userpay = await UserPayment.bulkCreate([
-        {
-            PaymentId: 1,
-            UserId: 3,
-        },
-        {
-            PaymentId: 2,
-            UserId: 2,
-        },
+    // const userpay = await UserPayment.bulkCreate([
+    //     {
+    //         PaymentId: 1,
+    //         UserId: 3,
+    //     },
+    //     {
+    //         PaymentId: 2,
+    //         UserId: 2,
+    //     },
 
-    ],{individualHooks:true})
+    // ],{individualHooks:true})
 
 
     process.exit(0)
