@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const bodyParser = require('body-parser');
 const { User, Pet, Comment } = require("../models");
+=======
+const {User, Pet, Comment, Post, Payment} = require('../models');
+>>>>>>> dev
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const jwtAuthMid = require("../utlis/tokenAuth.js");
@@ -14,7 +18,11 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
+<<<<<<< HEAD
       include: [Comment],
+=======
+      include: [Comment, Pet, Post, Payment]
+>>>>>>> dev
     });
     if (!userData) {
       res.status(404).json({ message: "No user with this id!" });
@@ -79,6 +87,7 @@ router.post("/", async (req, res) => {
 
 router.get("/profile", jwtAuthMid, async (req, res) => {
   try {
+<<<<<<< HEAD
     const me = await User.findOne({
       where: {
         id: req.user,
@@ -90,6 +99,19 @@ router.get("/profile", jwtAuthMid, async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ err });
+=======
+      const me = await User.findOne({
+          where:{
+              id:req.user
+          },
+          include:[Comment, Pet, Post, Payment]
+      })
+      res.json(me);
+      // console.log(me)
+  } catch(err){
+      console.log(err);
+      res.status(500).json({err})
+>>>>>>> dev
   }
 });
 

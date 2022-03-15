@@ -1,3 +1,7 @@
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+
+
 const User = require('./User');
 const Pet = require('./Pet');
 const PetVac = require('./PetVac');
@@ -10,9 +14,15 @@ const Payment = require('./Payment');
 // const CommMgr = require('./CommMgr');
 
 
+const UserPet = sequelize.define('UserPet', {})
+const UserPost = sequelize.define('UserPost', {})
+const PostComment = sequelize.define('PostComment', {})
+const UserComment = sequelize.define('UserComment', {})
+const UserPayment = sequelize.define('UserPayment', {})
+
 
 User.hasMany(Pet)
-Pet.belongsToMany(User, { through: 'UserPet'})
+Pet.belongsToMany(User, { through: UserPet})
 
 
 Pet.hasMany(PetVac);
@@ -20,19 +30,19 @@ PetVac.belongsTo(Pet);
 
 
 User.hasMany(Post)
-Post.belongsToMany(User, { through: 'UserPost'})
+Post.belongsToMany(User, { through: UserPost})
 
 
 Post.hasMany(Comment)
-Comment.belongsToMany(Post, { through: 'Post_has_Comment'})
+Comment.belongsToMany(Post, { through: PostComment})
 
 
 User.hasMany(Comment)
-Comment.belongsToMany(User, { through: 'User_has_Comment'})
+Comment.belongsToMany(User, { through: UserComment})
 
 
 User.hasMany(Payment)
-Payment.belongsToMany(User, { through: 'UserPayment'})
+Payment.belongsToMany(User, { through: UserPayment})
 
 
 
@@ -46,5 +56,5 @@ Payment.belongsToMany(User, { through: 'UserPayment'})
 
 
 
-module.exports = { User, Pet, PetVac, Post, Comment, Payment}
+module.exports = { User, Pet, UserPet, PetVac, Post, UserPost, PostComment, UserComment, Comment, Payment, UserPayment}
 

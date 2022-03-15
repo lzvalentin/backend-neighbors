@@ -1,8 +1,12 @@
 const router = require("express").Router();
+<<<<<<< HEAD
 const {Payment} = require("../models");
 const stripe = process.env.STRIPE_SECRET_KEY;
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 const bodyParser = require('body-parser');
+=======
+const {Payment, User} = require("../models");
+>>>>>>> dev
 
 // List all payments,
 // Create a payment
@@ -14,7 +18,9 @@ const bodyParser = require('body-parser');
 router.get("/", async (req, res) => {
   try {
       console.log("getRoutes")
-    const paymentData = await Payment.findAll({});
+    const paymentData = await Payment.findAll({
+      include: [User]
+    });
     if (!paymentData) {
       res.status(404).json({ message: "No payment with this id!" });
       return;
