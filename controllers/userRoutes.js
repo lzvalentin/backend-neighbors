@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {User, Pet, Comment} = require('../models');
+const {User, Pet, Comment, Post, Payment} = require('../models');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const jwtAuthMid = require("../utlis/tokenAuth.js");
@@ -10,7 +10,7 @@ const jwtAuthMid = require("../utlis/tokenAuth.js");
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
-      include: [Comment]
+      include: [Comment, Pet, Post, Payment]
     });
     if (!userData) {
       res.status(404).json({ message: 'No user with this id!' });
@@ -90,7 +90,7 @@ router.get("/profile",jwtAuthMid,async (req,res)=>{
           where:{
               id:req.user
           },
-          include:[Comment]
+          include:[Comment, Pet, Post, Payment]
       })
       res.json(me);
       // console.log(me)

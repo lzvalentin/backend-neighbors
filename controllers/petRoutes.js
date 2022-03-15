@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { User, PetVac, UserPet } = require('../models');
 const Pet = require('../models/Pet');
 
 // const connection = require("../config/connection.js");
@@ -6,7 +7,9 @@ const Pet = require('../models/Pet');
 router.get("/", async (req, res) => {
   try {
     // Find all pets
-    const petData = await Pet.findAll();
+    const petData = await Pet.findAll({
+      include: [PetVac, User]
+    });
     if (!petData) {
       res.status(404).json({ message: 'No pets with this id!' });
       return;
